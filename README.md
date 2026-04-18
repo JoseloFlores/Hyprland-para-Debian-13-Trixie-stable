@@ -1,6 +1,6 @@
 # Hyprland Dotfiles - Debian 13 (Trixie)
 
-Este repositorio contiene la configuración personalizada para Hyprland, Waybar y herramientas multimedia.
+Este repositorio contiene la configuración personalizada para Hyprland, Waybar y herramientas multimedia, enfocada en un flujo de trabajo moderno y eficiente.
 
 ## 🚀 Guía de Instalación Rápida
 
@@ -13,8 +13,11 @@ sudo apt update && sudo apt install -y \
     google-chrome-stable playerctl wireplumber brightnessctl \
     grim slurp swappy jq fonts-font-awesome pavucontrol \
     blueman build-essential libadwaita-1-dev libgtk-4-dev \
-    libgdk-pixbuf-2.0-dev pkg-config
+    libgdk-pixbuf-2.0-dev pkg-config \
+    hyprlock hypridle
 ```
+
+> **Nota:** Se han añadido `hyprlock` (bloqueador visual) e `hypridle` (gestor de inactividad) para el manejo de energía y seguridad.
 
 ### 2. Gestión de Red (Adwaita Network)
 Esta configuración utiliza [adw-network](https://github.com/PlayRood32/adw-network) para una gestión de red moderna con estética libadwaita.
@@ -36,25 +39,40 @@ sudo sed -i 's/Icon=icon/Icon=adwaita-network/' /usr/share/applications/com.gith
 ```
 
 ### 3. Clonar Configuración
-Si ya tienes este repo en GitHub, clónalo directamente en tu carpeta `.config`:
+Clona este repositorio en tu carpeta `.config`:
 
 ```bash
 mkdir -p ~/.config
 git clone https://github.com/TU_USUARIO/TU_REPO.git ~/.config/hypr
 ```
 
-### 3. Estructura de Archivos
-Asegúrate de que la carpeta tenga esta estructura:
-- `hyprland.conf`: Configuración principal y atajos.
-- `waybar/`: Barra de estado superior.
-- `power_menu.sh`: Script para el menú de apagado.
-- `wall.png`: Fondo de pantalla por defecto.
+---
+
+## 🔒 Bloqueo y Ahorro de Energía (Estilo GNOME)
+
+Esta configuración emula el comportamiento de GNOME, donde las pantallas se apagan inmediatamente al bloquear y el equipo se protege al cerrar la tapa.
+
+### ¿Cómo funciona?
+1.  **Bloqueo Manual (`SUPER + L`):** Abre un menú (Wofi). Al elegir "Bloquear Pantalla", se activa `hyprlock` y se apagan los monitores instantáneamente para ahorrar energía.
+2.  **Cierre de Tapa (Lid Switch):** Al cerrar la tapa de tu notebook, la sesión se bloquea automáticamente y las pantallas se apagan. Al abrirla, los monitores se encienden de nuevo.
+3.  **Inactividad Automática:**
+    *   **5 minutos:** Se bloquea la pantalla automáticamente.
+    *   **5.5 minutos:** Se apagan los monitores (DPMS off).
+    *   **30 minutos:** El sistema entra en suspensión (Suspend to RAM).
+
+### Archivos Clave:
+*   `hypridle.conf`: Define los tiempos de espera y qué comandos ejecutar (bloqueo, apagado de pantalla, suspensión).
+*   `hyprlock.conf`: Personaliza la apariencia de la pantalla de bloqueo (fondo, reloj, campo de contraseña).
+*   `power_menu.sh`: Script que integra el bloqueo con el apagado inmediato de monitores.
+
+---
 
 ## ⌨️ Atajos de Teclado Multimedia (Personalizados)
 Estos atajos son globales y funcionan sin importar el foco de la ventana:
 
 | Combinación | Acción | Herramienta |
 | ----------- | ------ | ----------- |
+| `Super + L` | Menú de Energía / Bloqueo | `power_menu.sh` |
 | `Ctrl + Alt + M` | Subir Volumen | `wpctl` |
 | `Ctrl + Alt + N` | Bajar Volumen | `wpctl` |
 | `Ctrl + Alt + /` | Play / Pause | `playerctl` |
@@ -62,11 +80,13 @@ Estos atajos son globales y funcionan sin importar el foco de la ventana:
 | `Ctrl + Alt + ,` | Pista Anterior | `playerctl` |
 
 ## 📸 Capturas de Pantalla
-- `Print`: Seleccionar área (con edición en `swappy`).
-- `Alt + Print`: Capturar ventana activa.
-- `Super + Print`: Capturar monitor actual.
+*   `Print`: Seleccionar área (con edición en `swappy`).
+*   `Alt + Print`: Capturar ventana activa.
+*   `Super + Print`: Capturar monitor actual.
+
+---
 
 ## 🛠️ Notas Adicionales
-- **Spotify:** Para que los controles multimedia funcionen con Spotify, asegúrate de que la aplicación esté abierta (usa `Super + Z`).
-- **Actualizaciones:** El icono 󰏖 en la barra (Waybar) indica actualizaciones de Debian pendientes. Haz clic en él para abrir Kitty y actualizar el sistema automáticamente.
-- **Waybar:** Si la barra no carga, verifica que el archivo `~/.config/hypr/waybar/config` tenga las rutas correctas.
+*   **Identificar tu Tapa (Lid Switch):** Si el bloqueo al cerrar la tapa no funciona, verifica el nombre de tu dispositivo con `hyprctl devices`. Busca en la sección "Switches". Si se llama distinto a "Lid Switch", actualiza la línea correspondiente en `hyprland.conf`.
+*   **Actualizaciones:** El icono 󰏖 en la barra (Waybar) indica actualizaciones de Debian pendientes.
+*   **Spotify:** Los controles multimedia requieren que Spotify esté abierto (`Super + Z`).

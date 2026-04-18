@@ -6,7 +6,8 @@ selected=$(echo -e "$options" | wofi -dmenu -p "Acciones")
 
 case "$selected" in
     "Bloquear Pantalla")
-	hyprlock 
+	loginctl lock-session
+	sleep 4 && hyprctl dispatch dpms off
 	;;
     "Apagar")
         systemctl poweroff
