@@ -1,13 +1,13 @@
-# 🌌 Hyprland Dotfiles - Universal Minimalist Setup
+# 🌌 Modern-Hypr-Setup
 
-Este repositorio contiene una configuración optimizada para **Hyprland**, enfocada en la eficiencia, estética moderna y gestión inteligente de energía.
+Este repositorio contiene una configuración optimizada para **Hyprland**, enfocada en la eficiencia, estética moderna y gestión inteligente de energía para múltiples distribuciones.
 
 ## 🚀 Instalación Rápida (Un solo comando)
 
 Copia y pega este comando en tu terminal para instalar dependencias y configurar todo automáticamente:
 
 ```bash
-git clone https://github.com/TU_USUARIO/TU_REPO.git && cd TU_REPO && chmod +x install.sh && ./install.sh
+git clone https://github.com/JoseloFlores/Modern-Hypr-Setup.git && cd Modern-Hypr-Setup && chmod +x install.sh && ./install.sh
 ```
 
 > **Nota:** El script `install.sh` detecta automáticamente tu distribución (**Arch, Debian/Ubuntu, Fedora**) e instala los paquetes necesarios.
