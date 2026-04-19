@@ -6,13 +6,48 @@
     "output": "eDP-1",
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": [],
-    "modules-right": ["custom/updates", "pulseaudio", "network", "bluetooth", "cpu", "memory", "battery", "clock", "tray"],
+    "modules-right": ["custom/updates", "pulseaudio", "network", "bluetooth", "cpu", "memory", "battery", "clock", "tray", "group/power"],
+
+    "group/power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/power", // Este es el icono que siempre se ve
+            "custom/quit",
+            "custom/lock",
+            "custom/reboot"
+        ]
+    },
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/confirm_power.sh \"¿Apagar el sistema?\" \"shutdown now\""
+    },
+    "custom/quit": {
+        "format": "󰗼",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/confirm_power.sh \"¿Cerrar sesión?\" \"hyprctl dispatch exit\""
+    },
+    "custom/lock": {
+        "format": "󰌾",
+        "tooltip": false,
+        "on-click": "loginctl lock-session"
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/confirm_power.sh \"¿Reiniciar el sistema?\" \"reboot\""
+    },
 
     "custom/updates": {
         "format": "󰏖 {}",
         "interval": 3600,
-        "exec": "apt list --upgradable 2>/dev/null | grep -c upgradable",
-        "on-click": "gnome-terminal -e sudo apt update && sudo apt upgrade",
+        "exec": "~/.config/hypr/check_updates.sh",
+        "on-click": "gnome-terminal -- sh -c 'if command -v nala > /dev/null; then sudo nala upgrade; elif command -v apt > /dev/null; then sudo apt update && sudo apt upgrade; elif command -v pacman > /dev/null; then sudo pacman -Syu; elif command -v dnf > /dev/null; then sudo dnf update; fi'",
         "tooltip": false
     },
 

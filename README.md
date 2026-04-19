@@ -1,92 +1,56 @@
-# Hyprland Dotfiles - Debian 13 (Trixie)
+# 🌌 Hyprland Dotfiles - Universal Minimalist Setup
 
-Este repositorio contiene la configuración personalizada para Hyprland, Waybar y herramientas multimedia, enfocada en un flujo de trabajo moderno y eficiente.
+Este repositorio contiene una configuración optimizada para **Hyprland**, enfocada en la eficiencia, estética moderna y gestión inteligente de energía.
 
-## 🚀 Guía de Instalación Rápida
+## 🚀 Instalación Rápida (Un solo comando)
 
-### 1. Instalar Dependencias del Sistema
-Copia y pega este comando en tu terminal para instalar todos los programas necesarios que utiliza esta configuración:
-
-```bash
-sudo apt update && sudo apt install -y \
-    hyprland waybar swaybg wofi gnome-terminal nautilus \
-    google-chrome-stable playerctl wireplumber brightnessctl \
-    grim slurp swappy jq fonts-font-awesome pavucontrol \
-    blueman build-essential libadwaita-1-dev libgtk-4-dev \
-    libgdk-pixbuf-2.0-dev pkg-config \
-    hyprlock hypridle
-```
-
-> **Nota:** Se han añadido `hyprlock` (bloqueador visual) e `hypridle` (gestor de inactividad) para el manejo de energía y seguridad.
-
-### 2. Gestión de Red (Adwaita Network)
-Esta configuración utiliza [adw-network](https://github.com/PlayRood32/adw-network) para una gestión de red moderna con estética libadwaita.
-
-#### Instalación:
-Requiere **Rust 1.95+**. Si usas la versión de Debian, actualiza con `rustup`.
+Copia y pega este comando en tu terminal para instalar dependencias y configurar todo automáticamente:
 
 ```bash
-# Compilar e instalar
-git clone https://github.com/PlayRood32/adw-network.git
-cd adw-network
-cargo build --release
-sudo install -Dm755 target/release/adwaita-network /usr/bin/adwaita-network
-sudo install -Dm644 data/com.github.adw-network.desktop /usr/share/applications/com.github.adw-network.desktop
-
-# Instalar Icono
-sudo install -Dm644 data/icons/hicolor/scalable/apps/icon.png /usr/share/icons/hicolor/scalable/apps/adwaita-network.png
-sudo sed -i 's/Icon=icon/Icon=adwaita-network/' /usr/share/applications/com.github.adw-network.desktop
+git clone https://github.com/TU_USUARIO/TU_REPO.git && cd TU_REPO && chmod +x install.sh && ./install.sh
 ```
 
-### 3. Clonar Configuración
-Clona este repositorio en tu carpeta `.config`:
-
-```bash
-mkdir -p ~/.config
-git clone https://github.com/TU_USUARIO/TU_REPO.git ~/.config/hypr
-```
+> **Nota:** El script `install.sh` detecta automáticamente tu distribución (**Arch, Debian/Ubuntu, Fedora**) e instala los paquetes necesarios.
 
 ---
 
-## 🔒 Bloqueo y Ahorro de Energía (Estilo GNOME)
+## ✨ Características Principales
 
-Esta configuración emula el comportamiento de GNOME, donde las pantallas se apagan inmediatamente al bloquear y el equipo se protege al cerrar la tapa.
-
-### ¿Cómo funciona?
-1.  **Bloqueo Manual (`SUPER + L`):** Abre un menú (Wofi). Al elegir "Bloquear Pantalla", se activa `hyprlock` y se apagan los monitores instantáneamente para ahorrar energía.
-2.  **Cierre de Tapa (Lid Switch):** Al cerrar la tapa de tu notebook, la sesión se bloquea automáticamente y las pantallas se apagan. Al abrirla, los monitores se encienden de nuevo.
-3.  **Inactividad Automática:**
-    *   **5 minutos:** Se bloquea la pantalla automáticamente.
-    *   **5.5 minutos:** Se apagan los monitores (DPMS off).
-    *   **30 minutos:** El sistema entra en suspensión (Suspend to RAM).
-
-### Archivos Clave:
-*   `hypridle.conf`: Define los tiempos de espera y qué comandos ejecutar (bloqueo, apagado de pantalla, suspensión).
-*   `hyprlock.conf`: Personaliza la apariencia de la pantalla de bloqueo (fondo, reloj, campo de contraseña).
-*   `power_menu.sh`: Script que integra el bloqueo con el apagado inmediato de monitores.
+-   **⚡ Gestión de Energía (Estilo GNOME):** 
+    -   Bloqueo automático tras 5 min de inactividad.
+    -   Apagado inmediato de monitores al bloquear (`Super + L`) o cerrar la tapa.
+    -   Suspensión automática tras 30 min.
+-   **🔘 Menú de Energía en Waybar:** Drawer integrado con opciones de Bloqueo, Reinicio y Apagado.
+-   **📸 Capturas Inteligentes:** Integración con `grim`, `slurp` y `swappy` para edición inmediata.
+-   **🎨 Estética Coherente:** Waybar y Wofi con estilos personalizados.
 
 ---
 
-## ⌨️ Atajos de Teclado Multimedia (Personalizados)
-Estos atajos son globales y funcionan sin importar el foco de la ventana:
+## ⌨️ Atajos de Teclado Útiles
 
-| Combinación | Acción | Herramienta |
-| ----------- | ------ | ----------- |
-| `Super + L` | Menú de Energía / Bloqueo | `power_menu.sh` |
-| `Ctrl + Alt + M` | Subir Volumen | `wpctl` |
-| `Ctrl + Alt + N` | Bajar Volumen | `wpctl` |
-| `Ctrl + Alt + /` | Play / Pause | `playerctl` |
-| `Ctrl + Alt + .` | Siguiente Pista | `playerctl` |
-| `Ctrl + Alt + ,` | Pista Anterior | `playerctl` |
-
-## 📸 Capturas de Pantalla
-*   `Print`: Seleccionar área (con edición en `swappy`).
-*   `Alt + Print`: Capturar ventana activa.
-*   `Super + Print`: Capturar monitor actual.
+| Combinación | Acción |
+| ----------- | ------ |
+| `Super + Return` | Terminal (`gnome-terminal`) |
+| `Super + D` | Lanzador de aplicaciones (`wofi`) |
+| `Super + L` | Menú de Bloqueo/Energía |
+| `Super + Q` | Cerrar ventana activa |
+| `Super + E` | Explorador de archivos (`nautilus`) |
+| `Print` | Capturar área seleccionada |
 
 ---
 
-## 🛠️ Notas Adicionales
-*   **Identificar tu Tapa (Lid Switch):** Si el bloqueo al cerrar la tapa no funciona, verifica el nombre de tu dispositivo con `hyprctl devices`. Busca en la sección "Switches". Si se llama distinto a "Lid Switch", actualiza la línea correspondiente en `hyprland.conf`.
-*   **Actualizaciones:** El icono 󰏖 en la barra (Waybar) indica actualizaciones de Debian pendientes.
-*   **Spotify:** Los controles multimedia requieren que Spotify esté abierto (`Super + Z`).
+## 🛠️ Requisitos Adicionales
+
+-   **Navegador:** Esta configuración busca `google-chrome`. Puedes cambiarlo en `hyprland.conf` modificando la variable `$browser`.
+-   **Fuentes:** Se utiliza **Font Awesome** para los iconos de Waybar.
+-   **Red:** Para una integración visual completa, se recomienda [adw-network](https://github.com/PlayRood32/adw-network).
+
+---
+
+## 📂 Estructura del Proyecto
+
+-   `hyprland.conf`: Configuración principal de Hyprland.
+-   `hypridle.conf` & `hyprlock.conf`: Gestión de inactividad y bloqueo.
+-   `waybar/`: Configuración y estilos de la barra superior.
+-   `power_menu.sh` & `confirm_power.sh`: Scripts auxiliares para el menú de energía.
+-   `wall2.jpg`: Fondo de pantalla por defecto.
