@@ -6,7 +6,17 @@
     "output": "eDP-1",
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["mpris"],
-    "modules-right": ["custom/updates", "pulseaudio", "network", "bluetooth", "battery", "clock", "tray", "group/power"],
+    "modules-right": ["custom/updates", "group/quicksettings", "clock", "tray", "group/power"],
+
+    "group/quicksettings": {
+        "orientation": "inherit",
+        "modules": [
+            "pulseaudio",
+            "network",
+            "bluetooth",
+            "battery"
+        ]
+    },
 
     "mpris": {
         "format": "{player_icon} {title} - {artist} [{position}/{length}]",
@@ -35,10 +45,10 @@
             "transition-left-to-right": false
         },
         "modules": [
-            "custom/power", // Este es el icono que siempre se ve
-            "custom/quit",
+            "custom/power", 
             "custom/lock",
-            "custom/reboot"
+            "custom/reboot",
+            "custom/quit"
         ]
     },
     "custom/power": {

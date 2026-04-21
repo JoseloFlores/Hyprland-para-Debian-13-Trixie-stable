@@ -20,9 +20,10 @@ git clone https://github.com/JoseloFlores/Modern-Hypr-Setup.git && cd Modern-Hyp
     -   Bloqueo automático tras 5 min de inactividad.
     -   Apagado inmediato de monitores al bloquear (`Super + L`) o cerrar la tapa.
     -   Suspensión automática tras 30 min.
--   **🔘 Menú de Energía en Waybar:** Drawer integrado con opciones de Bloqueo, Reinicio y Apagado.
+-   **🔘 Menú de Energía y Quick Settings:** Drawer integrado y grupo de ajustes rápidos (Volumen, Red, Bluetooth, Batería) con estilo moderno.
+-   **🎵 Control de Medios:** Integración con MPRIS para controlar música (Spotify, Firefox, etc.) directamente desde la barra.
 -   **📸 Capturas Inteligentes:** Integración con `grim`, `slurp` y `swappy` para edición inmediata.
--   **🎨 Estética Coherente:** Waybar y Wofi con estilos personalizados.
+-   **🎨 Estética Coherente:** Waybar rediseñado con estilo tipo "píldora" y Wofi con estilos personalizados.
 
 ---
 
@@ -30,20 +31,25 @@ git clone https://github.com/JoseloFlores/Modern-Hypr-Setup.git && cd Modern-Hyp
 
 | Combinación | Acción |
 | ----------- | ------ |
-| `Super + Return` | Terminal (`gnome-terminal`) |
+| `Super + Return` | Terminal (`foot`) |
 | `Super + D` | Lanzador de aplicaciones (`wofi`) |
-| `Super + L` | Menú de Bloqueo/Energía |
+| `Super + L` | Bloquear sesión (`hyprlock`) |
 | `Super + Q` | Cerrar ventana activa |
 | `Super + E` | Explorador de archivos (`nautilus`) |
+| `Super + Shift + B` | Recargar Waybar (Configuración y Estilo) |
 | `Print` | Capturar área seleccionada |
+| `XF86Audio...` | Control de Volumen (Subir/Bajar/Mutear) |
+| `XF86MonBrightness...` | Control de Brillo (Subir/Bajar) |
 
 ---
 
 ## 🛠️ Requisitos Adicionales
 
+-   **Terminal:** Se utiliza `foot` por su ligereza y soporte Wayland nativo.
 -   **Navegador:** Esta configuración busca `google-chrome`. Puedes cambiarlo en `hyprland.conf` modificando la variable `$browser`.
--   **Fuentes:** Se utiliza **Font Awesome** para los iconos de Waybar.
--   **Red:** Para una integración visual completa, se recomienda [adw-network](https://github.com/PlayRood32/adw-network).
+-   **Fuentes:** Se recomiendan **Nerd Fonts** (ej. `Symbols Nerd Font`, `MesloLGM Nerd Font`) para la correcta visualización de iconos.
+-   **Audio:** Utiliza `wpctl` (Pipewire/Wireplumber) para el control de volumen.
+-   **Brillo:** Requiere `brightnessctl` para los atajos de teclado de brillo.
 
 ---
 
