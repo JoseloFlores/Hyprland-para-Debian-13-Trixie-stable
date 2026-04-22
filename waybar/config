@@ -6,7 +6,7 @@
     "output": "eDP-1",
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["mpris"],
-    "modules-right": ["custom/updates", "group/quicksettings", "clock", "tray", "group/power"],
+    "modules-right": ["group/quicksettings", "clock", "custom/updates","tray", "group/power"],
 
     "group/quicksettings": {
         "orientation": "inherit",
@@ -29,7 +29,7 @@
         "status-icons": {
             "paused": "⏸"
         },
-        "max-length": 50,
+        "max-length": 40,
         "on-click": "playerctl play-pause",
         "on-click-right": "playerctl next",
         "on-click-middle": "playerctl previous",
@@ -75,8 +75,10 @@
     "custom/updates": {
         "format": "{}",
         "interval": 3600,
+        "return-type": "json",
         "exec": "~/.config/hypr/check_updates.sh",
-        "on-click": "gnome-terminal -- sh -c 'if command -v nala > /dev/null; then sudo nala upgrade; elif command -v apt > /dev/null; then sudo apt update && sudo apt upgrade; elif command -v pacman > /dev/null; then sudo pacman -Syu; elif command -v dnf > /dev/null; then sudo dnf update; fi'",
+        "on-click": "foot sh -c 'sudo apt update && sudo apt upgrade; pkill -SIGRTMIN+8 waybar; echo \"Sistema actualizado. Presiona cualquier tecla para cerrar...\"; read -n 1'",
+        "signal": 8,
         "tooltip": false
     },
 
@@ -103,7 +105,7 @@
         "timezone": "America/Argentina/Buenos_Aires",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": " {:%H:%M   %d/%m}",
-        "format-alt": " {:%H:%M:%S}"
+        "format-alt": " {:%H:%M}"
     },
 
     "cpu": {

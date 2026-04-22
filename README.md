@@ -24,6 +24,12 @@ git clone https://github.com/JoseloFlores/Modern-Hypr-Setup.git && cd Modern-Hyp
 -   **🎵 Control de Medios:** Integración con MPRIS para controlar música (Spotify, Firefox, etc.) directamente desde la barra.
 -   **📸 Capturas Inteligentes:** Integración con `grim`, `slurp` y `swappy` para edición inmediata.
 -   **🎨 Estética Coherente:** Waybar rediseñado con estilo tipo "píldora" y Wofi con estilos personalizados.
+-   **📦 Gestión de Actualizaciones (Waybar):**
+    -   Módulo inteligente en la barra que muestra el estado del sistema.
+    -   **Icono Gris (`󰚰 0`):** Tu sistema está actualizado.
+    -   **Icono Naranja (`󰚰 5`):** Hay actualizaciones disponibles.
+    -   **Acción rápida:** Haz clic en el icono para abrir una terminal `foot` y actualizar automáticamente.
+
 
 ---
 
