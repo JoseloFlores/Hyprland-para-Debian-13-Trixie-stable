@@ -16,12 +16,12 @@ window#waybar {
 
 #workspaces {
     background-color: rgba(44, 46, 58, 0.6);
-    margin: 4px 8px;
+    margin: 2px 4px;
     border-radius: 12px;
 }
 
 #workspaces button {
-    padding: 0 8px;
+    padding: 0 6px;
     color: #565f89;
     transition: all 0.3s ease;
 }
@@ -34,16 +34,32 @@ window#waybar {
 
 #workspaces button:hover {
     color: #bb9af7;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
 }
 
 #clock,
 #tray,
 #custom-updates,
+#backlight,
 #mpris {
-    padding: 0 12px;
-    margin: 4px 4px;
+    padding: 0 8px;
+    margin: 2px 2px;
     background-color: rgba(44, 46, 58, 0.6);
     border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+#clock:hover,
+#tray:hover,
+#custom-updates:hover,
+#backlight:hover,
+#mpris:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#backlight {
+    color: #e0af68; /* Amarillo para el brillo */
 }
 
 #custom-updates.updated {
@@ -55,22 +71,18 @@ window#waybar {
     background-color: rgba(255, 158, 100, 0.1);
 }
 
-#custom-updates:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 /* --- GRUPO QUICK SETTINGS (ESTILO GNOME) --- */
 #group-quicksettings {
     background-color: rgba(56, 60, 74, 0.9);
-    padding: 0 15px;
-    margin: 4px 6px;
+    padding: 0 10px;
+    margin: 2px 2px;
     border-radius: 20px; /* Forma de píldora perfecta */
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
 }
 
 #group-quicksettings:hover {
-    background-color: rgba(82, 148, 226, 0.8); /* Azul GNOME al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #pulseaudio,
@@ -78,7 +90,7 @@ window#waybar {
 #bluetooth,
 #battery {
     background-color: transparent;
-    padding: 0 6px;
+    padding: 0 4px;
     margin: 0;
 }
 
@@ -89,12 +101,12 @@ window#waybar {
 
 /* Menú de Apagado */
 #group-power {
-    margin: 4px 4px;
+    margin: 2px 2px;
 }
 
 #custom-power, #custom-lock, #custom-reboot, #custom-quit {
-    padding: 0 10px;
-    margin: 4px 2px;
+    padding: 0 8px;
+    margin: 2px 2px;
     background-color: rgba(44, 46, 58, 0.6);
     border-radius: 10px;
 }

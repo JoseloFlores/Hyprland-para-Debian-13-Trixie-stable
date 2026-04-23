@@ -2,11 +2,20 @@
     "layer": "top",
     "position": "top",
     "height": 30,
-    "spacing": 2,
+    "spacing": 0,
     "output": "eDP-1",
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["mpris"],
-    "modules-right": ["group/quicksettings", "clock", "custom/updates","tray", "group/power"],
+    "modules-right": ["group/quicksettings", "clock", "custom/updates", "backlight", "tray", "group/power"],
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "min-length": 6
+    },
 
     "group/quicksettings": {
         "orientation": "inherit",
@@ -93,7 +102,7 @@
 
     "hyprland/window": {
         "format": "{}",
-        "max-length": 50,
+        "max-length": 40,
         "separate-outputs": true
     },
 
