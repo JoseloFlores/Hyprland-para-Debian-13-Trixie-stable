@@ -1,70 +1,41 @@
-# 🌌 Modern-Hypr-Setup
+# Hyprland Dotfiles - Debian 13 Trixie
 
-Este repositorio contiene una configuración optimizada para **Hyprland**, enfocada en la eficiencia, estética moderna y gestión inteligente de energía para múltiples distribuciones.
+Este repositorio contiene la configuración optimizada para Hyprland en Debian 13, utilizando **Eww (ElKowars Wacky Widgets)** como barra principal de estado.
 
-## 🚀 Instalación Rápida (Un solo comando)
+## 🚀 Características Principales
 
-Copia y pega este comando en tu terminal para instalar dependencias y configurar todo automáticamente:
+-   **Panel Superior (Eww):** Sustituye a Waybar con una lógica personalizada en Rust/Yuck.
+    -   **Espacios de Trabajo:** Indicadores dinámicos que escuchan eventos de Hyprland en tiempo real.
+    -   **Control de Media:** Módulo MPRIS con soporte para Spotify, Firefox y otros reproductores.
+    -   **Quick Settings:** Indicadores de volumen, brillo, red y batería con soporte para scroll y clics.
+    -   **Bluetooth:** Módulo inteligente que muestra dispositivos conectados y su nivel de batería.
+    -   **Calendario Flotante:** Widget interactivo que se despliega al tocar la hora.
+    -   **Power Menu Drawer:** Botón de apagado expansible que revela opciones de bloqueo, reinicio y cierre de sesión al pasar el cursor.
+-   **Estética Tokyo Night:** Esquema de colores coherente en todos los componentes.
+-   **Gestión de Actualizaciones:** Indicador visual de paquetes pendientes para Debian/APT.
 
-```bash
-git clone https://github.com/JoseloFlores/Modern-Hypr-Setup.git && cd Modern-Hypr-Setup && chmod +x install.sh && ./install.sh
-```
+## ⌨️ Atajos de Teclado Relevantes
 
-> **Nota:** El script `install.sh` detecta automáticamente tu distribución (**Arch, Debian/Ubuntu, Fedora**) e instala los paquetes necesarios.
+| Atajo | Acción |
+| :--- | :--- |
+| `Super + Shift + B` | Reiniciar Eww (Daemon y Barra) |
+| `Super + C` | Abrir Navegador |
+| `Super + Z` | Abrir Spotify |
+| `Super + Q` | Cerrar Ventana |
+| `Super + Espacio` | Lanzador Wofi |
 
----
+## 🛠️ Estructura de Archivos (Eww)
 
-## ✨ Características Principales
+La configuración se encuentra en `~/.config/eww/`:
 
--   **⚡ Gestión de Energía:** 
-    -   Bloqueo automático tras 5 min de inactividad.
-    -   Apagado inmediato de monitores al bloquear (`Super + L`) o cerrar la tapa.
-    -   Suspensión automática tras 30 min.
--   **🔘 Menú de Energía y Quick Settings:** Drawer integrado y grupo de ajustes rápidos (Volumen, Red, Bluetooth, Batería) con estilo moderno.
--   **🎵 Control de Medios:** Integración con MPRIS para controlar música (Spotify, Firefox, etc.) directamente desde la barra.
--   **📸 Capturas Inteligentes:** Integración con `grim`, `slurp` y `swappy` para edición inmediata.
--   **🎨 Estética Coherente:** Waybar rediseñado con estilo tipo "píldora" y Wofi con estilos personalizados y temas para elegir.
--   **📦 Gestión de Actualizaciones (Waybar):**
-    -   Módulo inteligente en la barra que muestra el estado del sistema.
-    -   **Icono Gris (`󰚰 0`):** Tu sistema está actualizado.
-    -   **Icono Naranja (`󰚰 5`):** Hay actualizaciones disponibles.
-    -   **Acción rápida:** Haz clic en el icono para abrir una terminal `foot` y actualizar automáticamente.
+-   `eww.yuck`: Definición de la estructura de los widgets y ventanas.
+-   `eww.scss`: Estilos CSS utilizando variables de Tokyo Night.
+-   `scripts/`: Lógica en Bash para la obtención de datos:
+    -   `workspaces`: Socket de Hyprland para escritorios.
+    -   `volume`: Integración con `wpctl`.
+    -   `bluetooth`: Estado vía `bluetoothctl`.
+    -   `active_window`: Título de la ventana enfocada.
 
+## 🔄 Reversibilidad (Waybar)
 
----
-
-## ⌨️ Atajos de Teclado Útiles
-
-| Combinación | Acción |
-| ----------- | ------ |
-| `Super + Return` | Terminal (`foot`) |
-| `Super + D` | Lanzador de aplicaciones (`wofi`) |
-| `Super + L` | Bloquear sesión, apagado o cerrar sesion(`hyprlock`) |
-| `Super + Q` | Cerrar ventana activa |
-| `Super + E` | Explorador de archivos (`nautilus`) |
-| `Super + Shift + B` | Recargar Waybar (Configuración y Estilo) |
-| `Print` | Capturar área seleccionada |
-| `XF86Audio...` | Control de Volumen (Subir/Bajar/Mutear) |
-| `XF86MonBrightness...` | Control de Brillo (Subir/Bajar) |
-
----
-
-## 🛠️ Requisitos Adicionales
-
--   **Terminal:** Se utiliza `foot` por su ligereza y soporte Wayland nativo.
--   **Navegador:** Esta configuración busca `google-chrome`. Puedes cambiarlo en `hyprland.conf` modificando la variable `$browser`.
--   **Fuentes:** Se recomiendan **Nerd Fonts** (ej. `Symbols Nerd Font`, `MesloLGM Nerd Font`) para la correcta visualización de iconos.
--   **Audio:** Utiliza `wpctl` (Pipewire/Wireplumber) para el control de volumen.
--   **Brillo:** Requiere `brightnessctl` para los atajos de teclado de brillo.
-
----
-
-## 📂 Estructura del Proyecto
-
--   `hyprland.conf`: Configuración principal de Hyprland.
--   `hypridle.conf` & `hyprlock.conf`: Gestión de inactividad y bloqueo.
--   `waybar/`: Configuración y estilos de la barra superior.
--   `conky/`: Configuración de estadísticas del sistema.
--   `power_menu.sh` & `confirm_power.sh`: Scripts auxiliares para el menú de energía.
--   `wall2.jpg`: Fondo de pantalla por defecto.
-lla por defecto.
+Si deseas volver a usar Waybar, la configuración sigue intacta en `hypr/waybar/`. Solo debes modificar las líneas de `exec-once` y los `binds` en `hyprland.conf` que se encuentran comentadas.
