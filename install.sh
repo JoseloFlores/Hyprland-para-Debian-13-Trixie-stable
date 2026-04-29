@@ -20,15 +20,15 @@ echo "Detectado: $OS"
 # Mapeo de paquetes por distribución
 case "$OS" in
     arch)
-        PACKAGES="hyprland waybar swaybg wofi foot conky nautilus playerctl wireplumber brightnessctl grim slurp swappy jq ttf-font-awesome pavucontrol blueman hyprlock hypridle polkit-kde-agent"
+        PACKAGES="hyprland waybar swaybg wofi foot nautilus playerctl wireplumber brightnessctl grim slurp swappy jq ttf-font-awesome pavucontrol blueman hyprlock hypridle polkit-kde-agent"
         INSTALL_CMD="sudo pacman -S --needed --noconfirm"
         ;;
     debian|ubuntu|pop)
-        PACKAGES="hyprland waybar swaybg wofi foot conky-all nautilus playerctl wireplumber brightnessctl grim slurp swappy jq fonts-font-awesome pavucontrol blueman hyprlock hypridle hyprpolkitagent"
+        PACKAGES="hyprland waybar swaybg wofi foot nautilus playerctl wireplumber brightnessctl grim slurp swappy jq fonts-font-awesome pavucontrol blueman hyprlock hypridle hyprpolkitagent"
         INSTALL_CMD="sudo apt update && sudo apt install -y"
         ;;
     fedora)
-        PACKAGES="hyprland waybar swaybg wofi foot conky nautilus playerctl wireplumber-utils brightnessctl grim slurp swappy jq fontawesome-fonts-all pavucontrol blueman hyprlock hypridle"
+        PACKAGES="hyprland waybar swaybg wofi foot nautilus playerctl wireplumber-utils brightnessctl grim slurp swappy jq fontawesome-fonts-all pavucontrol blueman hyprlock hypridle"
         INSTALL_CMD="sudo dnf install -y"
         ;;
     *)

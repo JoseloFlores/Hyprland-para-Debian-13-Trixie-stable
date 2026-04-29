@@ -82,7 +82,7 @@
     },
 
     "custom/updates": {
-        "format": "{}",
+        "format": "{text}",
         "interval": 3600,
         "return-type": "json",
         "exec": "~/.config/hypr/check_updates.sh",
@@ -112,9 +112,29 @@
 
     "clock": {
         "timezone": "America/Argentina/Buenos_Aires",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
         "format": " {:%H:%M   %d/%m}",
-        "format-alt": " {:%H:%M}"
+        "format-alt": " {:%H:%M}",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#bb9af7'><b>{}</b></span>",
+                "days":       "<span color='#c0caf5'><b>{}</b></span>",
+                "weeks":      "<span color='#7dcfff'><b>W{}</b></span>",
+                "weekdays":   "<span color='#e0af68'><b>{}</b></span>",
+                "today":      "<span color='#f7768e'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
 
     "cpu": {
@@ -143,7 +163,6 @@
         "tooltip-format": " {ifname} via {gwaddr}",
         "format-linked": " {ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click": "adwaita-network"
     },
 

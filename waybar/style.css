@@ -124,3 +124,20 @@ window#waybar {
 #custom-power:hover, #custom-lock:hover, #custom-reboot:hover, #custom-quit:hover {
     background-color: alpha(@base05, 0.1);
 }
+
+/* --- TOOLTIP & CALENDAR --- */
+tooltip {
+    background: alpha(@base00, 0.9);
+    border: 1px solid alpha(@accent4, 0.5);
+    border-radius: 12px;
+}
+
+tooltip label {
+    color: @base05;
+    font-size: 14px;
+    padding: 8px;
+}
+
+#calendar {
+    margin: 8px;
+}

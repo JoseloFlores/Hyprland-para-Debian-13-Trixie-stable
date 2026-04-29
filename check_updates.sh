@@ -9,7 +9,7 @@ else
 fi
 
 if [ "$count" -gt 0 ]; then
-    echo "{\"text\": \"󰚰 $count\", \"class\": \"pending\"}"
+    echo "{"text": "󰚰 $count", "class": "pending"}"
 else
-    echo "{\"text\": \"󰚰 0\", \"class\": \"updated\"}"
+    echo "{"text": "󰚰 0", "class": "updated"}"
 fi

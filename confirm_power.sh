@@ -7,7 +7,8 @@
 # -p: prompt personalizado
 # -L 2: solo 2 líneas para que sea compacto
 # -i: insensible a mayúsculas
-selected=$(echo -e "No\nSí" | wofi -dmenu -p "$1" -L 2 -i)
+selected=$(echo -e "No
+Sí" | wofi -dmenu -p "$1" -L 2 -i)
 
 if [[ "$selected" == "Sí" ]]; then
     eval "$2"

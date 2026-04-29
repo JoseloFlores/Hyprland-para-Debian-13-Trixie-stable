@@ -1,41 +1,48 @@
 # Hyprland Dotfiles - Debian 13 Trixie
 
-Este repositorio contiene la configuración optimizada para Hyprland en Debian 13, utilizando **Eww (ElKowars Wacky Widgets)** como barra principal de estado.
+Este repositorio contiene la configuración optimizada para Hyprland en Debian 13, utilizando **Waybar** como barra principal de estado.
 
 ## 🚀 Características Principales
 
--   **Panel Superior (Eww):** Sustituye a Waybar con una lógica personalizada en Rust/Yuck.
-    -   **Espacios de Trabajo:** Indicadores dinámicos que escuchan eventos de Hyprland en tiempo real.
-    -   **Control de Media:** Módulo MPRIS con soporte para Spotify, Firefox y otros reproductores.
-    -   **Quick Settings:** Indicadores de volumen, brillo, red y batería con soporte para scroll y clics.
-    -   **Bluetooth:** Módulo inteligente que muestra dispositivos conectados y su nivel de batería.
-    -   **Calendario Flotante:** Widget interactivo que se despliega al tocar la hora.
-    -   **Power Menu Drawer:** Botón de apagado expansible que revela opciones de bloqueo, reinicio y cierre de sesión al pasar el cursor.
--   **Estética Tokyo Night:** Esquema de colores coherente en todos los componentes.
--   **Gestión de Actualizaciones:** Indicador visual de paquetes pendientes para Debian/APT.
+-   **Panel Superior (Waybar):** Configuración modular con estética Tokyo Night.
+    -   **Espacios de Trabajo:** Indicadores dinámicos de Hyprland.
+    -   **Reloj y Calendario:** Módulo interactivo. Pasa el ratón para ver el calendario, usa la rueda para navegar entre meses y clic derecho para cambiar de modo (mes/año).
+    -   **Quick Settings:** Control de volumen (pavucontrol), red (nm-applet/adwaita), bluetooth (blueman) y batería.
+    -   **Media Control (MPRIS):** Muestra canción actual y permite control básico.
+    -   **Power Menu Drawer:** Menú expansible en la barra para Apagar, Reiniciar, Bloquear y Salir.
+    -   **Gestión de Actualizaciones:** Indicador de paquetes pendientes para APT.
+-   **Bloqueo de Pantalla:** Configuración de `hyprlock` con fondo difuminado y reloj minimalista.
+-   **Idle Management:** `hypridle` configurado para ahorrar energía y bloquear automáticamente.
+-   **Estética:** Tema Tokyo Night coherente en Waybar, Wofi y terminal (foot).
 
 ## ⌨️ Atajos de Teclado Relevantes
 
 | Atajo | Acción |
 | :--- | :--- |
-| `Super + Shift + B` | Reiniciar Eww (Daemon y Barra) |
-| `Super + C` | Abrir Navegador |
-| `Super + Z` | Abrir Spotify |
+| `Super + Return` | Abrir Terminal (foot) |
+| `Super + D` | Lanzador de aplicaciones (Wofi) |
 | `Super + Q` | Cerrar Ventana |
-| `Super + Espacio` | Lanzador Wofi |
+| `Super + C` | Abrir Navegador (Chrome) |
+| `Super + Z` | Abrir Spotify |
+| `Super + L` | Menú de Apagado (Wofi) |
+| `Super + Shift + B` | Recargar Waybar |
+| `Print` | Captura de pantalla (Área) |
 
-## 🛠️ Estructura de Archivos (Eww)
+## 🛠️ Estructura de Archivos
 
-La configuración se encuentra en `~/.config/eww/`:
+-   `hyprland.conf`: Configuración principal de Hyprland (monitores, binds, reglas).
+-   `waybar/`: Configuración y estilos de la barra superior.
+-   `hyprlock.conf` / `hypridle.conf`: Bloqueo y gestión de inactividad.
+-   `check_updates.sh`: Consulta actualizaciones pendientes.
+-   `confirm_power.sh`: Diálogo de confirmación para acciones de energía.
+-   `power_menu.sh`: Menú de apagado interactivo vía Wofi.
+-   `wall.jpeg` / `wall2.jpg`: Fondos de pantalla utilizados.
 
--   `eww.yuck`: Definición de la estructura de los widgets y ventanas.
--   `eww.scss`: Estilos CSS utilizando variables de Tokyo Night.
--   `scripts/`: Lógica en Bash para la obtención de datos:
-    -   `workspaces`: Socket de Hyprland para escritorios.
-    -   `volume`: Integración con `wpctl`.
-    -   `bluetooth`: Estado vía `bluetoothctl`.
-    -   `active_window`: Título de la ventana enfocada.
+## 🔧 Instalación
 
-## 🔄 Reversibilidad (Waybar)
+El script `install.sh` automatiza la instalación de dependencias en Arch, Debian y Fedora, y copia los archivos a `~/.config/hypr`.
 
-Si deseas volver a usar Waybar, la configuración sigue intacta en `hypr/waybar/`. Solo debes modificar las líneas de `exec-once` y los `binds` en `hyprland.conf` que se encuentran comentadas.
+```bash
+chmod +x install.sh
+./install.sh
+```
