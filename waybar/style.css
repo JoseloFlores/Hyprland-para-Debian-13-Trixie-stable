@@ -100,6 +100,10 @@ window#waybar {
 
 #pulseaudio { color: @accent5; }
 #network { color: @accent6; }
+#network.disconnected,
+#network.disabled {
+    color: @base04;
+}
 #bluetooth { color: @accent4; }
 #battery { color: @accent2; }
 

@@ -163,7 +163,8 @@
         "format-ethernet": "",
         "tooltip-format": " {ifname} via {gwaddr}",
         "format-linked": "",
-        "format-disconnected": "⚠",
+        "format-disconnected": "󰤮",
+        "format-disabled": "󰤮",
         "on-click": "adwaita-network"
     },
 
