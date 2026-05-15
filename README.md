@@ -2,16 +2,16 @@
 
 Este repositorio contiene la configuración optimizada para Hyprland en Debian 13, utilizando **Waybar** como barra principal de estado.
 
-## 🚀 Características Principales
+##  Características Principales
 
--   **Panel Superior (Waybar):** Configuración modular con estética Tokyo Night.
-    -   **Espacios de Trabajo:** Indicadores dinámicos de Hyprland.
-    -   **Reloj y Calendario:** Módulo interactivo. Pasa el ratón para ver el calendario, usa la rueda para navegar entre meses y clic derecho para cambiar de modo (mes/año).
-    -   **Quick Settings:** Control de volumen (gnome-control-center), red (nmtui) y bluetooth (blueman-manager).
-    -   **Confirmaciones:** Diálogos de confirmación para acciones de energía mediante `zenity`.
-    -   **Media Control (MPRIS):** Muestra canción actual y permite control básico.
-    -   **Power Menu Drawer:** Menú expansible en la barra para Apagar, Reiniciar, Bloquear y Salir.
-    -   **Gestión de Actualizaciones:** Indicador de paquetes pendientes para APT.
+-   **Panel Superior (Waybar):** Configuración modular con temas de color a eleccion.
+    - **Espacios de Trabajo:** Indicadores dinámicos mediante iconos de ventanas.
+        - **Batería:** Iconos estándar mejorados para mayor compatibilidad.
+        - **Reloj y Calendario:** Tooltip personalizado sin número de semana.
+        - **Quick Settings:** Control de volumen (gnome-control-center), red (nmtui) y bluetooth (blueman-manager).
+        - **Media Control (MPRIS):** Muestra canción actual y permite control básico (se oculta automáticamente si no hay contenido).
+        - **Power Menu Drawer:** Menú expansible en la barra para Apagar, Reiniciar, Bloquear y Salir.
+        - **Gestión de Actualizaciones:** Indicador de paquetes pendientes para APT.
 -   **Bloqueo de Pantalla:** Configuración de `hyprlock` con fondo difuminado y reloj minimalista.
 -   **Idle Management:** `hypridle` configurado para ahorrar energía y bloquear automáticamente.
 -   **Estética:** Tema Tokyo Night coherente en Waybar, Wofi y terminal (foot).

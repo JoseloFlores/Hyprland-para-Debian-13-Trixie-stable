@@ -92,12 +92,32 @@
     },
 
     "hyprland/workspaces": {
-        "format": "{name}",
-        "on-click": "activate",
-        "format-icons": {
-            "active": "",
-            "default": ""
-        }
+        "format": "{windows}",
+        "all-outputs": true,
+        "format-window-separator": " ",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "class<google-chrome>": "",
+            "class<chrome-cmkncekebbebpfilplodngbpllndjkfo-Default>": "",
+            "class<firefox>": "",
+            "class<brave-browser>": "",
+            "class<foot>": "",
+            "class<org.gnome.nautilus>": "",
+            "class<spotify>": "",
+            "class<code-oss>": "",
+            "class<vlc>": "",
+            "class<telegram-desktop>": "",
+            "class<steam>": "",
+            "class<vim>": "",
+            "class<neovim>": "",
+            "class<discord>": "",
+            "class<slack>": "",
+            "class<sublime-text>": "",
+            "class<gimp>": "",
+            "class<inkscape>": "",
+            "class<obs-studio>": " videocam"
+        },
+        "on-click": "activate"
     },
 
     "hyprland/window": {
