@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "height": 25,
     "spacing": 0,
     "output": "eDP-1",
     "modules-left": ["hyprland/workspaces"],
@@ -56,6 +56,7 @@
         "modules": [
             "custom/power", 
             "custom/lock",
+            "custom/suspend",
             "custom/reboot",
             "custom/quit"
         ]
@@ -64,6 +65,11 @@
         "format": "⏻",
         "tooltip": false,
         "on-click": "~/.config/hypr/confirm_power.sh \"¿Apagar el sistema?\" \"shutdown now\""
+    },
+    "custom/suspend": {
+        "format": "󰤄",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/confirm_power.sh \"¿Suspender el sistema?\" \"systemctl suspend\""
     },
     "custom/quit": {
         "format": "󰗼",
@@ -92,32 +98,10 @@
     },
 
     "hyprland/workspaces": {
-        "format": "{windows}",
-        "format-empty": "{name}",
+        "format": "{name}",
+        "on-click": "activate",
         "all-outputs": true,
-        "format-window-separator": "",
-        "window-rewrite": {
-            "class<google-chrome>": "",
-            "class<chrome-cmkncekebbebpfilplodngbpllndjkfo-Default>": "",
-            "class<firefox>": "",
-            "class<brave-browser>": "",
-            "class<foot>": "",
-            "class<org.gnome.nautilus>": "",
-            "class<spotify>": "",
-            "class<code-oss>": "",
-            "class<vlc>": "",
-            "class<telegram-desktop>": "",
-            "class<steam>": "",
-            "class<vim>": "",
-            "class<neovim>": "",
-            "class<discord>": "",
-            "class<slack>": "",
-            "class<sublime-text>": "",
-            "class<gimp>": "",
-            "class<inkscape>": "",
-            "class<obs-studio>": " videocam"
-        },
-        "on-click": "activate"
+        "sort-by-number": true
     },
 
     "hyprland/window": {

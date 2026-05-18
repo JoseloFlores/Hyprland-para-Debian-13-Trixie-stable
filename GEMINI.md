@@ -10,6 +10,14 @@ Este proyecto utiliza Hyprland sobre una base de Debian con GNOME instalado. Par
 - **Confirmaciones:** Los diálogos de confirmación del menú de energía (`confirm_power.sh`) deben utilizar `zenity --question` por su fiabilidad en este entorno.
 - **Bloqueo de Pantalla:** El botón de bloqueo debe llamar directamente a `hyprlock`.
 
+## Solución de Problemas
+
+### Iconos de Tray Ausentes (Spotify, Discord, etc.)
+Si aplicaciones como Spotify muestran un espacio vacío en el Tray:
+1. Asegurarse de tener `libayatana-appindicator3-1` instalado.
+2. Ejecutar la aplicación sin forzar Wayland nativo (dejar que use XWayland para el tray).
+3. Reiniciar Waybar con `Super + Shift + B`.
+
 ## Requisitos de Entorno
 
 - **Polkit Agent:** Se requiere un agente de autenticación activo. Se recomienda `hyprpolkitagent` (instalado y gestionado vía systemd). Debe iniciarse con `exec-once = systemctl --user start hyprpolkitagent` en `hyprland.conf`.

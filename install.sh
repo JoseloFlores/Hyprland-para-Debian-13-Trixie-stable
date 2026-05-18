@@ -24,7 +24,7 @@ case "$OS" in
         INSTALL_CMD="sudo pacman -S --needed --noconfirm"
         ;;
     debian|ubuntu|pop)
-        PACKAGES="hyprland waybar swaybg wofi foot nautilus playerctl wireplumber brightnessctl grim slurp swappy jq fonts-font-awesome pavucontrol blueman hyprlock hypridle hyprpolkitagent"
+        PACKAGES="hyprland waybar swaybg wofi foot nautilus playerctl wireplumber brightnessctl grim slurp swappy jq fonts-font-awesome pavucontrol blueman hyprlock hypridle hyprpolkitagent libayatana-appindicator3-1"
         INSTALL_CMD="sudo apt update && sudo apt install -y"
         ;;
     fedora)
